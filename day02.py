@@ -1,5 +1,6 @@
 from itertools import combinations
 
+
 def main():
     with open("day02.txt") as f:
         lines = f.readlines()
