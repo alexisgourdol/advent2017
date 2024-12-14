@@ -21,7 +21,6 @@ def run_2(instructions: list) -> int:
     pos = 0
     steps = 0
     next_position = 0
-    # print(f"{steps=} | {instructions=}")
     while 0 <= pos < len(instructions):
         if instructions[pos] == 0:
             # update instructions and stay at current position
@@ -39,8 +38,6 @@ def run_2(instructions: list) -> int:
                 instructions[pos] -= 1
                 pos += next_position
                 steps += 1
-        #print(f"{steps=} | {pos=} |{instructions[:10]=}")
-        #print(f"                |                 ={ ['^' if i == pos else 0 for i, el in enumerate(instructions[:10])] }")
     return steps
 
 RAW = """0
@@ -60,7 +57,7 @@ RAW = """0
 test_instructions = [int(el) for el in RAW.strip().split('\n')]
 test_instructions_2 = test_instructions.copy()
 print("test part 1: ", run(test_instructions))  # 5
-# print("test part 2: ", run_2(test_instructions_2))  # 8
+print("test part 2: ", run_2(test_instructions_2))  # 10
 
 
 if __name__ == "__main__":
