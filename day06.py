@@ -34,7 +34,6 @@ def reallocation_routine(memory_banks: list) -> int:
         memory_banks[max_index] = 0
         for i in range(0, max_value):
             # cycle over the memory banks list
-            # print(f"{i=}, {max_index=}, {(max_index+ i + 1)=},  {len(memory_banks)} -- {(max_index + i + 1) % len(memory_banks)}")
             memory_banks[(max_index + i + 1) % len(memory_banks)] += 1
         block_redistribution_cycle += 1
         if not memory_banks_cycle.get(tuple(memory_banks)):
@@ -42,10 +41,11 @@ def reallocation_routine(memory_banks: list) -> int:
         memory_banks_cycle[tuple(memory_banks)].append(block_redistribution_cycle)
         if tuple(memory_banks) in seen:
             already_seen = tuple(memory_banks)
+            num_cycles_to_seen_again = (memory_banks_cycle[already_seen][1] - memory_banks_cycle[already_seen][0])
             break
         else:
             seen.add(tuple(memory_banks))
-    return block_redistribution_cycle, (memory_banks_cycle[already_seen][1] - memory_banks_cycle[already_seen][0])
+    return block_redistribution_cycle, num_cycles_to_seen_again
 
 RAW = """0  2   7   0"""
 test_memory_banks = [int(el) for el in RAW.split()]
