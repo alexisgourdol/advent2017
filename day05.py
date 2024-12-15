@@ -65,4 +65,4 @@ if __name__ == "__main__":
         instructions = [int(el) for el in f.readlines()]
     instructions_2 = instructions.copy()
     print("part 1: ", run(instructions)) # 356687 wrong, too low ; 358309 ok
-    print("part 2: ", run_2(instructions_2)) # 2529 too low
+    print("part 2: ", run_2(instructions_2)) # 2529 too low; 28178177 ok
